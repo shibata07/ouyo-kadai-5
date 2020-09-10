@@ -1,0 +1,47 @@
+<table class="table">
+  <% if @range == '2' %> <!-- 以下bookの検索結果 -->
+
+    <h1>Books search for '<%= @word %>'</h1>
+
+  	<thead>
+  	  <tr>
+  	    <th></th>
+  	  	<th>title</th>
+  	  	<th>opinion</th>
+  	  </tr>
+  	</thead>
+
+  	<tbody>
+  	  <% @book.each do |book| %>
+  	    <tr>
+  	      <td><%= attachment_image_tag book.user, :profile_image, :fill, 45,45, fallback: "noimage",size:"45x45" %></td>
+  	      <td><%= book.title %></td>
+  	      <td><%= book.body %></td>
+  	    </tr>
+      <% end %>
+  	</tbody>
+
+  <% else %> <!-- 以下userの検索結果 -->
+
+    <h1>Users search for '<%= @word %>'</h1>
+
+    <thead>
+      <tr>
+  	    <th></th>
+  	  	<th>name</th>
+  	  	<th>introduction</th>
+  	  </tr>
+    </thead>
+
+    <tbody>
+      <% @user.each do |user| %>
+  	    <tr>
+  	      <td><%= attachment_image_tag user, :profile_image, :fill, 45,45, fallback: "noimage",size:"45x45" %></td>
+  	      <td><%= user.name %></td>
+  	      <td><%= user.introduction %></td>
+  	    </tr>
+      <% end %>
+    </tbody>
+
+  <% end %>
+</table>
